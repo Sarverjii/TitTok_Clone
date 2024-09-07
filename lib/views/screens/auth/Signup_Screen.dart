@@ -1,11 +1,15 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:tiktok/constants.dart';
 import 'package:tiktok/views/widgets/input_field.dart';
 
-class LoginScreen extends StatelessWidget {
-  LoginScreen({super.key});
-  final TextEditingController _emailcontroller = TextEditingController();
-  final TextEditingController _passwordcontroller = TextEditingController();
+class SignupScreen extends StatelessWidget {
+  final TextEditingController _emailcotroller = TextEditingController();
+  final TextEditingController _usercotroller = TextEditingController();
+  final TextEditingController _passwordcotroller = TextEditingController();
+
+  SignupScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,16 +24,50 @@ class LoginScreen extends StatelessWidget {
             style: TextStyle(
                 fontSize: 35, color: buttonColor, fontWeight: FontWeight.w900),
           ),
-          SizedBox(
-            height: 30,
-          ),
-          const Text("Login",
+          const Text("Register",
               style: TextStyle(fontSize: 35, fontWeight: FontWeight.w700)),
-          const SizedBox(height: 25),
+          const SizedBox(height: 05),
+          Stack(
+            children: [
+              CircleAvatar(
+                radius: 67,
+                backgroundColor: Colors.red,
+                child: CircleAvatar(
+                  backgroundImage:
+                      AssetImage("Assests/Images/profile-user.png"),
+                  radius: 64,
+                  backgroundColor: Colors.white,
+                ),
+              ),
+              Positioned(
+                  bottom: -10,
+                  left: 80,
+                  child: IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.add_a_photo_sharp,
+                        color: Colors.white,
+                        
+                      )))
+            ],
+          ),
+          SizedBox(
+            height: 25,
+          ),
           Container(
             margin: EdgeInsets.symmetric(horizontal: 20),
             child: TextInputField(
-                controller: _emailcontroller,
+                controller: _usercotroller,
+                labelText: "Username",
+                icon: Icons.person),
+          ),
+          SizedBox(
+            height: 25,
+          ),
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 20),
+            child: TextInputField(
+                controller: _emailcotroller,
                 labelText: "Email",
                 icon: Icons.email),
           ),
@@ -39,7 +77,7 @@ class LoginScreen extends StatelessWidget {
           Container(
             margin: EdgeInsets.symmetric(horizontal: 20),
             child: TextInputField(
-              controller: _passwordcontroller,
+              controller: _passwordcotroller,
               labelText: "Password",
               icon: Icons.password,
               isObscure: true,
@@ -72,7 +110,7 @@ class LoginScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "Dont\'t have an account?",
+                "Already have an account? ",
                 style: TextStyle(fontSize: 20),
               ),
               SizedBox(
@@ -81,7 +119,7 @@ class LoginScreen extends StatelessWidget {
               InkWell(
                 onTap: () {},
                 child: Text(
-                  "Regester Here",
+                  "Login Here",
                   style: TextStyle(color: buttonColor, fontSize: 20),
                 ),
               )
@@ -90,5 +128,6 @@ class LoginScreen extends StatelessWidget {
         ],
       ),
     ));
+    ;
   }
 }
